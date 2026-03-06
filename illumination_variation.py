@@ -77,3 +77,32 @@ plt.ylabel("Frequency")
 
 plt.tight_layout()
 plt.show()
+
+
+contrast = cv2.equalizeHist(gray)
+
+plt.figure(figsize=(10,4))
+
+plt.subplot(1,2,1)
+plt.imshow(gray, cmap='gray')
+plt.title("Before Enhancement")
+plt.axis('off')
+
+plt.subplot(1,2,2)
+plt.imshow(contrast, cmap='gray')
+plt.title("After Histogram Equalization")
+plt.axis('off')
+
+plt.show()
+
+plt.figure(figsize=(10,4))
+
+plt.subplot(1,2,1)
+plt.hist(gray.ravel(), bins=256, range=[0,256])
+plt.title("Original Histogram")
+
+plt.subplot(1,2,2)
+plt.hist(contrast.ravel(), bins=256, range=[0,256])
+plt.title("Enhanced Histogram")
+
+plt.show()
